@@ -10,3 +10,12 @@ Name=AutoBoarding
 Comment=Automate Storyboarding with - Spiritus, StoryDiffusion, Laten Diffusion
 ```
 then restart Krita if open and recheck for the plugin.
+
+### ComfyUI (optional)
+If you donot have comfyui already installed then
+```
+git clone https://github.com/comfyanonymous/ComfyUI
+cd ComfyUI
+pip install -r requirements.txt
+python main.py
+```
