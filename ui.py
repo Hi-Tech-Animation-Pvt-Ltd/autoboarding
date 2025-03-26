@@ -4,9 +4,12 @@ from PyQt5.QtWidgets import (
     QSpinBox, QGroupBox, QScrollArea, QSplitter, QFrame, 
     QGridLayout, QLineEdit, QCheckBox, QProgressBar
 )
+
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QPixmap, QImage
+import numpy as np
 from krita import *
+from . import backend
 
 class AutoBoardingDialog(QDialog):
     def __init__(self, parent=None):
@@ -590,18 +593,17 @@ class AutoBoardingDialog(QDialog):
     # Storyboard tab methods
     def generate_panel(self):
         # Simulate panel generation
-        self.progress_bar.setValue(0)
-        
-        # In a real implementation, this would call your AI backend
-        # For now, we'll just simulate progress
-        for i in range(101):
-            # Update progress every few steps
-            if i % 10 == 0:
-                self.progress_bar.setValue(i)
-                QApplication.processEvents()  # Allow UI to update
-        
-        # For demonstration purposes, set a placeholder image
-        self.panel_preview.setText("Panel would be generated here using AI models")
+        self.progress_bar.setValue(10)
+
+        # <----- AI implementation box ----->
+        prompt = self.scene_desc.toPlainText()
+        self.progress_bar.setValue(15)
+        image = backend.ai.genPanel(prompt)
+        self.progress_bar.setValue(50)
+
+        img_array = np.array(image)
+        qImage = QImage(img_array.data, img_array.shape[1], img_array.shape[0], QImage.Format_RGB888)
+        self.panel_preview.setPixmap(QPixmap.fromImage(qImage))
         self.progress_bar.setValue(100)
     
     def apply_to_layer(self):

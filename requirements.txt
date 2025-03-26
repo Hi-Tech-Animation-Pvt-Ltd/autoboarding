@@ -1,6 +1,4 @@
 PyQT5==5.15.11
-torch
-diffusers
-transformers
-pillow
-numpy
+pillow==11.1.0
+numpy==2.2.4
+requests==2.32.3
