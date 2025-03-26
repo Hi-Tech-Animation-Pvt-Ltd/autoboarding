@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import *
 def showwin():
     QMessageBox.information(QWidget(), "AutoBoarding", "It works yippee!")
 
-class AutoBoarding(DockWidget):
+class AutoBoardingDocker(DockWidget):
 
     def __init__(self, parent = ...):
         super().__init__()
@@ -29,17 +29,6 @@ class AutoBoarding(DockWidget):
     def canvasChanged(self, canvas):
         pass
 
-    '''
-    def setup(self):
-        pass
-
-
-    def createActions(self, window):
-        action = window.createAction("window_test_id", "AutoBoarding", "tools/scripts")     # <---- putting our extenstion to be accessible throught tools/scripts
-        action.triggered.connect(showwin)'''
-        
-# ----- extension code -----
-# Krita.instance().addExtension(AutoBoarding(Krita.instance()))
 
 # ----- docker widget code -----
-Krita.instance().addDockWidgetFactory(DockWidgetFactory("autoboarding", DockWidgetFactoryBase.DockRight, AutoBoarding))
+Krita.instance().addDockWidgetFactory(DockWidgetFactory("autoboarding", DockWidgetFactoryBase.DockRight, AutoBoardingDocker))
