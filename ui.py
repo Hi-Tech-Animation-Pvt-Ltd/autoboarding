@@ -7,9 +7,8 @@ from PyQt5.QtWidgets import (
 
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QPixmap, QImage
-import numpy as np
 from krita import *
-from . import backend
+from . import backend, comfyAPI
 
 class AutoBoardingDialog(QDialog):
     def __init__(self, parent=None):
@@ -594,17 +593,46 @@ class AutoBoardingDialog(QDialog):
     def generate_panel(self):
         # Simulate panel generation
         self.progress_bar.setValue(10)
+        QApplication.processEvents()
 
         # <----- AI implementation box ----->
         prompt = self.scene_desc.toPlainText()
         self.progress_bar.setValue(15)
-        image = backend.ai.genPanel(prompt)
+        QApplication.processEvents()
+
+        # using the backend.py
+        '''image = backend.ai.genPanel(prompt)
         self.progress_bar.setValue(50)
 
         img_array = np.array(image)
         qImage = QImage(img_array.data, img_array.shape[1], img_array.shape[0], QImage.Format_RGB888)
-        self.panel_preview.setPixmap(QPixmap.fromImage(qImage))
+        self.panel_preview.setPixmap(QPixmap.fromImage(qImage))'''
+
+        # Call ComfyUI API ----------------------------------------------------
+        result = comfyAPI.genImage(
+            prompt=prompt,
+            width=self.panel_width.value(),
+            height=self.panel_height.value()
+        )
+        self.progress_bar.setValue(90)
+        QApplication.processEvents()
+
+         # Check result
+        if result["success"]:
+            # Load image from path
+            pixmap = QPixmap(result["path"])
+            
+            # Display in the UI
+            self.panel_preview.setPixmap(pixmap)
+            self.panel_preview.setScaledContents(True)
+            
+            # Store the path for later use
+            self.generated_panels.append(result["path"])
+        else:
+            self.panel_preview.setText(f"Error: {result['message']}")
+        
         self.progress_bar.setValue(100)
+        # -----------------------------------------------------------------------
     
     def apply_to_layer(self):
         # Apply the generated panel to a new layer in Krita
