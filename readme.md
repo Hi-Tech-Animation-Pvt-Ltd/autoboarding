@@ -16,15 +16,14 @@ This tool automates the conversion of screenplay text into visual storyboards us
 ## 📋 Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ai-auto-storyboarding.git
-cd ai-auto-storyboarding
+git clone https://github.com/Hi-Tech-Animation-Pvt-Ltd/autoboarding.git
+cd autoboarding
 
-# Install dependencies
+# Setup venv and install dependencies
+pip install venv
+python -m venv .env
+source .env/Scripts/activate
 pip install -r requirements.txt
-
-# Set up environment
-cp .env.example .env
-# Edit .env with your configuration
 
 # Run development server
 python run.py
