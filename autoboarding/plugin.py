@@ -1,3 +1,6 @@
+import sys, os
+sys.path.append(os.path.dirname(__file__), "external")
+
 import logging
 from krita import *
 from PyQt5.QtWidgets import QWidget
