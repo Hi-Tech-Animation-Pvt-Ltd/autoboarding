@@ -1,5 +1,7 @@
 # AutoBoarding - Task Breakdown
 
+*Last updated: 2025-04-11*
+
 ## Phase 1: Research & Setup (1-2 weeks)
 
 - [ ] **Task 1.1: Krita Plugin Development Research**
@@ -32,31 +34,31 @@
 
 ## Phase 2: Core Plugin Structure (2-3 weeks)
 
-- [ ] **Task 2.1: Plugin Foundation**
-  - [ ] Set up directory structure, `.desktop` file, `__init__.py`
-  - [ ] Implement basic plugin loading/unloading
-  - [ ] Create a simple Krita Docker UI (PyQt/PySide)
-  - [ ] Establish the foundational architecture of the plugin
+- [x] **Task 2.1: Plugin Foundation** *(Completed 2025-04-11)*
+  - [x] Set up directory structure, `.desktop` file, `__init__.py`
+  - [x] Implement basic plugin loading/unloading
+  - [x] Create a simple Krita Docker UI (PyQt/PySide)
+  - [x] Establish the foundational architecture of the plugin
 
-- [ ] **Task 2.2: Local Backend API Communication**
-  - [ ] Add configuration settings for backend API URL
-  - [ ] Write functions to construct API requests based on user input
-  - [ ] Implement request/response handling with the local API
-  - [ ] Develop robust error handling for connection issues
-  - [ ] Create feedback system for users
+- [x] **Task 2.2: Local Backend API Communication** *(Completed 2025-04-11)*
+  - [x] Add configuration settings for backend API URL
+  - [x] Write functions to construct API requests based on user input
+  - [x] Implement request/response handling with the local API
+  - [x] Develop robust error handling for connection issues
+  - [x] Create feedback system for users
 
-- [ ] **Task 2.3: Basic Text-to-Image UI**
-  - [ ] Design UI components for users to input scene descriptions
-  - [ ] Add text input for prompt, generation button, status area
-  - [ ] Connect UI elements to API call functions
-  - [ ] Display loading indicators and error messages
+- [x] **Task 2.3: Basic Text-to-Image UI** *(Completed 2025-04-11)*
+  - [x] Design UI components for users to input scene descriptions
+  - [x] Add text input for prompt, generation button, status area
+  - [x] Connect UI elements to API call functions
+  - [x] Display loading indicators and error messages
   - [ ] Implement a "batch generate" mode for sequential shots
 
-- [ ] **Task 2.4: Image Integration with Krita**
-  - [ ] Use Krita API to process generated images
-  - [ ] Create functions to add new layers
-  - [ ] Place generated images onto layers
-  - [ ] Handle basic image manipulation within Krita
+- [x] **Task 2.4: Image Integration with Krita** *(Completed 2025-04-11)*
+  - [x] Use Krita API to process generated images
+  - [x] Create functions to add new layers
+  - [x] Place generated images onto layers
+  - [x] Handle basic image manipulation within Krita
 
 ## Phase 3: Consistency Features (3-4 weeks)
 
@@ -115,10 +117,10 @@
 
 ## Phase 5: Documentation & Release (1-2 weeks)
 
-- [ ] **Task 5.1: User Documentation**
-  - [ ] Create installation guide
-  - [ ] Write usage tutorials with examples
-  - [ ] Document configuration options
+- [x] **Task 5.1: User Documentation** *(Partially Completed 2025-04-11)*
+  - [x] Create installation guide
+  - [x] Write usage tutorials with examples
+  - [x] Document configuration options
   - [ ] Create troubleshooting guide
   - [ ] Produce video demonstrations
 
@@ -138,9 +140,17 @@
 
 ## Future Considerations
 
-- Supporting both ComfyUI and AUTOMATIC1111 APIs
+- Supporting both ComfyUI and AUTOMATIC1111 APIs *(AUTOMATIC1111 implemented, ComfyUI pending)*
 - Advanced animation timeline integration
 - Multi-character scene management
 - Batch sequence generation with shared elements
 - Integration with Krita's animation tools
 - Export to various storyboard formats
+
+## Discovered During Work
+
+- [ ] **Task 6.1: Plugin Refinements**
+  - [ ] Add requirements.txt to autoboarding directory
+  - [ ] Implement ComfyUI API support
+  - [ ] Add unit tests for critical components
+  - [ ] Create developer documentation for extension points
